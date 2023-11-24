@@ -1,11 +1,14 @@
 from django.urls import path
 from .views import CostObjectListCreateView, CostObjectDetailView
+from .views import CostingListCreateView, CostingDetailView
 from .views import DirectLaborCostObjectListCreateView, DirectLaborCostObjectDetailView
 from .views import DirectRawMaterialCostObjectListCreateView, DirectRawMaterialCostObjectDetailView
 from .views import DirectServiceCostObjectListCreateView, DirectServiceCostObjectDetailView
 from .views import ActivityCostObjectListCreateView, ActivityCostObjectDetailView
 
 urlpatterns = [
+    path('costings/', CostingListCreateView.as_view(), name='costing-list-create'),
+    path('costings/<int:pk>/', CostingDetailView.as_view(), name='costing-detail'),
     path('cost-objects/', CostObjectListCreateView.as_view(), name='cost-object-list-create'),
     path('cost-objects/<int:pk>/', CostObjectDetailView.as_view(), name='cost-object-detail'),
     path('direct-labor-cost-objects/', DirectLaborCostObjectListCreateView.as_view(), name='direct-labor-cost-object-list-create'),
